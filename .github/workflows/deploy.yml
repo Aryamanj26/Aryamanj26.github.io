@@ -1,41 +1,64 @@
-name: Build and Deploy
-env:
-  CI: false
-  GITHUB_USERNAME: ${{ github.repository_owner }}
-  REACT_APP_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This is automatically set by Github Actions
-  USE_GITHUB_DATA: "true"
-  MEDIUM_USERNAME: "saadpasta" # Change this to your medium username
+name: Deploy to GitHub Pages
+
 on:
   workflow_dispatch:
   push:
-    branches:
-      - master
+    branches: [ main ]
   schedule:
-    - cron: "0 12 * * 1" # see https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events
+    - cron: "0 12 * * 1"  # weekly Monday noon UTC
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+env:
+  CI: false
+  GITHUB_USERNAME: ${{ github.repository_owner }}
+  USE_GITHUB_DATA: "true"
+  # Change or remove if you don't use Medium:
+  MEDIUM_USERNAME: "AryamanJ26"
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3 # If you're using actions/checkout@v3 you must set persist-credentials to false in most cases for the deployment to work correctly.
-        with:
-          persist-credentials: false
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js 🔧
-        uses: actions/setup-node@v3.8.1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: 18
+          cache: 'npm'
 
-      - name: Update npm 🚀
-        run: npm install -g npm@latest
+      # Install deps (prefer lockfile if present)
+      - name: Install
+        run: npm ci || npm install
 
-      - name: Install and Build 🔧 # Build the Project
-        run: |
-          npm install
-          npm run build
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      # Build the site. If fetch.js needs a token, pass a secret here ONLY.
+      - name: Build
+        run: node fetch.js && npm run build
+        env:
+          # OPTIONAL: create a PAT with minimal scopes (read-only public) as a repo secret like PUBLIC_GH_TOKEN
+          # and use that here. Avoid injecting ${{ secrets.GITHUB_TOKEN }} into the client app.
+          REACT_APP_GITHUB_TOKEN: ${{ secrets.PUBLIC_GH_TOKEN }}
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }} # This is provided by GitHub.
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: build # The folder the action should deploy.
+          path: ./build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
