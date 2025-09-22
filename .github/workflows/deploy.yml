@@ -40,7 +40,10 @@ jobs:
       - name: Fetch GitHub/Medium data
         run: node fetch.js
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # ephemeral; safe for server-side
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # ephemeral; server-side only
+          GITHUB_USERNAME: ${{ github.repository_owner }}
+          USE_GITHUB_DATA: "true"
+          MEDIUM_USERNAME: "AryamanJ26"   
 
       # Build the React app (no token needed here)
       - run: npm run build
