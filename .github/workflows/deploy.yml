@@ -5,7 +5,7 @@ on:
   push:
     branches: [ main ]
   schedule:
-    - cron: "0 12 * * 1"  # weekly Monday noon UTC
+    - cron: "0 12 * * 1"
 
 permissions:
   contents: read
@@ -20,36 +20,33 @@ env:
   CI: false
   GITHUB_USERNAME: ${{ github.repository_owner }}
   USE_GITHUB_DATA: "true"
-  # Change or remove if you don't use Medium:
-  MEDIUM_USERNAME: "AryamanJ26"
+  MEDIUM_USERNAME: "AryamanJ26"  # Change or remove if not using Medium
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'npm'
 
-      # Install deps (prefer lockfile if present)
-      - name: Install
-        run: npm ci || npm install
+      # Install deps
+      - run: npm ci || npm install
 
-      # Build the site. If fetch.js needs a token, pass a secret here ONLY.
-      - name: Build
-        run: node fetch.js && npm run build
+      # Run server-side data fetch with short-lived token (NOT exposed to client)
+      - name: Fetch GitHub/Medium data
+        run: node fetch.js
         env:
-          # OPTIONAL: create a PAT with minimal scopes (read-only public) as a repo secret like PUBLIC_GH_TOKEN
-          # and use that here. Avoid injecting ${{ secrets.GITHUB_TOKEN }} into the client app.
-          REACT_APP_GITHUB_TOKEN: ${{ secrets.PUBLIC_GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # ephemeral; safe for server-side
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      # Build the React app (no token needed here)
+      - run: npm run build
+
+      # Hand the build to Pages
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
 

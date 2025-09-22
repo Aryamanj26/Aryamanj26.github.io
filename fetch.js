@@ -1,3 +1,12 @@
+const GH_TOKEN =
+  process.env.GITHUB_TOKEN ||           // passed by the workflow
+  process.env.PUBLIC_GH_TOKEN ||        // optional PAT secret name
+  process.env.REACT_APP_GITHUB_TOKEN;   // legacy fallback if you ever used it
+
+if (!GH_TOKEN && process.env.USE_GITHUB_DATA === "true") {
+  throw new Error("Missing GitHub token. Set GITHUB_TOKEN or PUBLIC_GH_TOKEN in the workflow.");
+}
+
 fs = require("fs");
 const https = require("https");
 process = require("process");
@@ -62,7 +71,7 @@ if (USE_GITHUB_DATA === "true") {
     port: 443,
     method: "POST",
     headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
+      Authorization: `Bearer ${GH_TOKEN}`,
       "User-Agent": "Node"
     }
   };
