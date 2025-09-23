@@ -12,8 +12,8 @@ const MEDIUM_USERNAME = process.env.MEDIUM_USERNAME || "";
 
 // Prefer server-side tokens (NOT REACT_APP_*) so they never ship to the client
 const GH_TOKEN =
-  process.env.GITHUB_TOKEN ||        // provided by GitHub Actions
-  process.env.PUBLIC_GH_TOKEN ||     // optional PAT secret
+  process.env.GITHUB_TOKEN || // provided by GitHub Actions
+  process.env.PUBLIC_GH_TOKEN || // optional PAT secret
   "";
 
 // ---- Helpers ----
@@ -23,7 +23,7 @@ function writeJSON(file, obj) {
 }
 
 function fetchGitHubProfile(username, token) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     // Default empty profile shape the UI can handle
     const fallback = {
       data: {
@@ -32,13 +32,15 @@ function fetchGitHubProfile(username, token) {
           bio: "",
           avatarUrl: "",
           location: "",
-          pinnedItems: { totalCount: 0, edges: [] }
+          pinnedItems: {totalCount: 0, edges: []}
         }
       }
     };
 
     if (USE_GITHUB_DATA !== "true" || !username) {
-      console.log("Skipping GitHub fetch (USE_GITHUB_DATA=false or no username).");
+      console.log(
+        "Skipping GitHub fetch (USE_GITHUB_DATA=false or no username)."
+      );
       writeJSON("./public/profile.json", fallback);
       return resolve();
     }
@@ -78,7 +80,8 @@ function fetchGitHubProfile(username, token) {
     }
   }
 }
-`});
+`
+    });
 
     const options = {
       hostname: "api.github.com",
@@ -93,20 +96,23 @@ function fetchGitHubProfile(username, token) {
       }
     };
 
-    const req = https.request(options, (res) => {
+    const req = https.request(options, res => {
       let data = "";
       console.log(`GitHub statusCode: ${res.statusCode}`);
 
-      res.on("data", (d) => (data += d));
+      res.on("data", d => (data += d));
       res.on("end", () => {
         if (res.statusCode !== 200) {
           console.warn("GitHub fetch non-200; writing fallback profile.json.");
           writeJSON("./public/profile.json", fallback);
           return resolve();
         }
-        fs.writeFile("./public/profile.json", data, (err) => {
+        fs.writeFile("./public/profile.json", data, err => {
           if (err) {
-            console.warn("Failed to write profile.json; writing fallback.", err);
+            console.warn(
+              "Failed to write profile.json; writing fallback.",
+              err
+            );
             writeJSON("./public/profile.json", fallback);
           } else {
             console.log("saved file to public/profile.json");
@@ -116,8 +122,11 @@ function fetchGitHubProfile(username, token) {
       });
     });
 
-    req.on("error", (e) => {
-      console.warn("GitHub fetch error; writing fallback profile.json.", e.message);
+    req.on("error", e => {
+      console.warn(
+        "GitHub fetch error; writing fallback profile.json.",
+        e.message
+      );
       writeJSON("./public/profile.json", fallback);
       resolve();
     });
@@ -128,8 +137,8 @@ function fetchGitHubProfile(username, token) {
 }
 
 function fetchMediumBlogs(username) {
-  return new Promise((resolve) => {
-    const fallback = { items: [] };
+  return new Promise(resolve => {
+    const fallback = {items: []};
 
     if (!username) {
       console.log("No MEDIUM_USERNAME; writing empty blogs.json.");
@@ -145,20 +154,23 @@ function fetchMediumBlogs(username) {
       method: "GET"
     };
 
-    const req = https.request(options, (res) => {
+    const req = https.request(options, res => {
       let data = "";
       console.log(`Medium statusCode: ${res.statusCode}`);
 
-      res.on("data", (d) => (data += d));
+      res.on("data", d => (data += d));
       res.on("end", () => {
         if (res.statusCode !== 200) {
           console.warn("Medium fetch non-200; writing empty blogs.json.");
           writeJSON("./public/blogs.json", fallback);
           return resolve();
         }
-        fs.writeFile("./public/blogs.json", data, (err) => {
+        fs.writeFile("./public/blogs.json", data, err => {
           if (err) {
-            console.warn("Failed to write blogs.json; writing empty list.", err);
+            console.warn(
+              "Failed to write blogs.json; writing empty list.",
+              err
+            );
             writeJSON("./public/blogs.json", fallback);
           } else {
             console.log("saved file to public/blogs.json");
@@ -168,7 +180,7 @@ function fetchMediumBlogs(username) {
       });
     });
 
-    req.on("error", (e) => {
+    req.on("error", e => {
       console.warn("Medium fetch error; writing empty blogs.json.", e.message);
       writeJSON("./public/blogs.json", fallback);
       resolve();

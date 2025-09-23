@@ -1,4 +1,8 @@
-src/serviceWorker.js
-package-lock.json
-src/assets/lottie
-
+build/
+docs/
+node_modules/
+public/*.json
+src/assets/lottie/**
+# Optional:
+# src/serviceWorker.js
+# package-lock.json

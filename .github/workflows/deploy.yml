@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
   schedule:
     - cron: "0 12 * * 1"
 
@@ -20,7 +20,7 @@ env:
   CI: false
   GITHUB_USERNAME: ${{ github.repository_owner }}
   USE_GITHUB_DATA: "true"
-  MEDIUM_USERNAME: "AryamanJ26"  # Change or remove if not using Medium
+  MEDIUM_USERNAME: "AryamanJ26" # Change or remove if not using Medium
 
 jobs:
   build:
@@ -31,7 +31,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'
+          cache: "npm"
 
       # Install deps
       - run: npm ci || npm install
@@ -40,10 +40,10 @@ jobs:
       - name: Fetch GitHub/Medium data
         run: node fetch.js
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # ephemeral; server-side only
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # ephemeral; server-side only
           GITHUB_USERNAME: ${{ github.repository_owner }}
           USE_GITHUB_DATA: "true"
-          MEDIUM_USERNAME: "AryamanJ26"   
+          MEDIUM_USERNAME: "AryamanJ26"
 
       # Build the React app (no token needed here)
       - run: npm run build

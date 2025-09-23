@@ -22,10 +22,10 @@
   "scripts": {
     "start": "node fetch.js && react-scripts start",
     "build": "react-scripts build",
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,json,md,mdx,yml,yaml,html}\"",
+    "check-format": "prettier -c \"./**/*.{js,jsx,ts,tsx,css,scss,json,md,mdx,yml,yaml,html}\"",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "format": "prettier --write \"./**/*.{js,css,json,scss}\"",
-    "check-format": "prettier -c \"./**/*.{js,css,json,scss}\""
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
