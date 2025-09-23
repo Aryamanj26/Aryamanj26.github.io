@@ -1,11 +1,7 @@
-@font-face {
-  font-family: "Agustina Regular";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Agustina Regular"),
-    url("./assets/fonts/Agustina.woff") format("woff");
-  font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+
+/* Playfair Display replaces Agustina Regular */
+/* No local font-face needed, using Google Fonts import */
 @font-face {
   font-family: "Montserrat";
   src: local("Montserrat"),

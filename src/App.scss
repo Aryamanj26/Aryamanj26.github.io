@@ -19,10 +19,12 @@
   justify-content: center;
   font-size: calc(0.625rem + 2vmin);
   color: $textColorDark;
+  box-shadow: 0 0 36px $lightBoxShadowDark;
 }
 
 .App-link {
   color: $appLink;
+  text-shadow: 0 1px 2px $darkBoxShadow2;
 }
 
 .subTitle {

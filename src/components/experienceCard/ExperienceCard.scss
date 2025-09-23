@@ -6,6 +6,7 @@
   box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
   border-radius: 10px;
   border: 1px solid $lightBorder1;
+  color: $textColor;
 }
 
 .experience-card-dark {
@@ -14,6 +15,7 @@
   box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
   border-radius: 10px;
   border: 1px solid $lightBorder1;
+  color: $textColorDark;
 }
 
 .experience-card:hover {

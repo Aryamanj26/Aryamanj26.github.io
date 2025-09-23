@@ -1,4 +1,5 @@
 @import "../../_globalColor";
+@import "./playfair-import.css";
 
 /*React-headroom*/
 .headroom-wrapper {
@@ -25,6 +26,7 @@
   max-width: 100%;
   padding: 15px 20px;
   margin: 0px auto;
+  border-bottom: 1px solid $lightBorder1;
 }
 
 .header ul {
@@ -43,6 +45,8 @@
   padding: 15px 20px;
   color: $textColor;
   text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s;
 }
 
 .header li a:hover,
@@ -58,14 +62,13 @@
   text-decoration: none;
   margin-top: 10px;
   line-height: normal;
-}
-
-.header .logo-name {
-  font-family: "Agustina Regular";
-  font-weight: bold;
-  font-variant-ligatures: no-common-ligatures;
-  -webkit-font-variant-ligatures: no-common-ligatures;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
   padding: 0 10px;
+  /* Clean minimalist style */
 }
 
 /* menu */
