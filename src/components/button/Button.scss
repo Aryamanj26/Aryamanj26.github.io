@@ -17,11 +17,10 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out 0s;
-  box-shadow: 0 2px 8px $lightBoxShadowDark;
 }
 .main-button:hover {
-  background-color: $buttonHover;
-  color: $textColorDark;
+  background-color: $darkBoxShadow2;
+  color: $buttonColor;
   transition: all 0.3s ease 0s;
   transform: translateY(-3px);
 }
