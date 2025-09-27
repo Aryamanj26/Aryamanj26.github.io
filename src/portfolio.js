@@ -45,7 +45,7 @@ const socialMediaLinks = {
 
 const skillsSection = {
   title: "What I do",
-  subTitle: "SYSTEMS ENGINEER OBSESSED WITH SEEING THE WORLD AS INTERCONNECTED SYSTEMS, FROM CIRCUITS TO CODE, ALWAYS FINDING ELEGANT WAYS TO MAKE THEM WORK TOGETHER.",
+  subTitle: "ELECTRICAL ENGINEER OBSESSED WITH SEEING THE WORLD AS INTERCONNECTED SYSTEMS, FROM CIRCUITS TO CODE, ALWAYS FINDING ELEGANT WAYS TO MAKE THEM WORK TOGETHER.",
   skills: [
     "⚡ Hardware/Software co-design: integrating embedded firmware, digital logic, and high-level software for robust systems",
     "⚡ Computer architecture: custom RISC CPU design, FPGA prototyping, and performance optimization",
