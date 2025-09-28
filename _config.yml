@@ -69,8 +69,8 @@ skills:
   - category: Hardware Design & RTL
     tools:
       - SystemVerilog
-      - FPGA prototyping
       - RTL design & verification
+      - Vivado
       - Cadence Virtuoso
       - LTspice
   - category: Prototyping Platforms

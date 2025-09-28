@@ -75,7 +75,7 @@
         
         <div class="project-description">
             <h2>Project Overview</h2>
-            <p>Developed a machine learning-based system for detecting plant diseases from leaf images. Utilized image processing and deep learning techniques to achieve high accuracy in classification and diagnosis.</p>
+            <p>I built a deep learning pipeline for plant disease classification using the New Plant Diseases Dataset (87,000 images, 38 classes). The goal was to design a model robust to real world conditions such as noisy inputs, low quality photos, cluttered backgrounds, and uneven data availability. The final system combined preprocessing, manual feature extraction, and a 5 layer CNN with batch normalization and dropout, achieving 95% test accuracy while maintaining strong generalization.</p>
         </div>
         <div class="skills-card">
             <h2>Skills Used</h2> 
@@ -114,10 +114,8 @@
   <li>Computer vision</li>
   <li>Classification</li>
   <li>Python</li>
+  <li>PyTorch</li>
 </ul>
-
-<h2 id="embedding-images">Embedding images</h2>
-<h3 id="example-images">Example images</h3>
 
 <div class="image-gallery" style="--gallery-height: 400px;">
   
@@ -128,10 +126,33 @@
       
   
 </div>
-<p><span style="font-size: 10px">Plant disease detection system diagram</span></p>
 
-<h2 id="embedding-youtube-video">Embedding youtube video</h2>
-<p><em>Example</em> : https://www.youtube.com/watch?v={<strong>MhVw-MHGv4s</strong>}</p>
+<h2 id="what-i-built">What I Built</h2>
+
+<ul>
+  <li>Preprocessing pipeline with image augmentation and a novel leaf masking step to remove background clutter</li>
+  <li>Manual feature extraction using histogram equalization, K means clustering, contour tracing, DWT, PCA, and GLCM for contrast, shape, and texture features</li>
+  <li>Final CNN architecture with 5 convolutional layers, batch normalization, dropout, and max pooling to improve feature learning and generalization</li>
+  <li>Adaptive hyperparameter tuning to adjust learning rate and dropout dynamically based on validation trends</li>
+  <li>Validation and testing with confusion matrices, ROC curves, and per class precision and recall tracking</li>
+</ul>
+
+<h2 id="my-experience">My Experience</h2>
+
+<p>At first, a simple 3 layer CNN was not enough as it overfit quickly and missed subtle disease patterns. Iterating on the architecture, expanding it to 5 layers, and refining preprocessing taught me that robust models require both strong data pipelines and careful network design. Masking turned out to be critical as removing noisy backgrounds made classification much more reliable. Adaptive hyperparameter tuning showed limited short term impact but worked better in longer training, pointing to how automation can reduce trial and error in industry workflows. I also encountered imbalanced data availability across disease classes, which made generalization harder and highlighted the need for careful augmentation strategies.</p>
+
+<h2 id="takeaways">Takeaways</h2>
+
+<ul>
+  <li>Background clutter reduced accuracy; masking solved this by isolating leaves for reliable feature extraction</li>
+  <li>Limited and imbalanced data availability is a real bottleneck; augmentation and masking mitigated its impact</li>
+  <li>Shallow CNNs underfit complex datasets; deeper 5 layer CNNs with normalization and dropout improved generalization</li>
+  <li>Manual hyperparameter sweeps are inefficient; adaptive tuning automated optimization and reduced training overhead</li>
+  <li>Real performance gains came from combining data preprocessing with model design, not from model depth alone</li>
+</ul>
+
+<h2 id="project-report">Project Report</h2>
+<p><a href="https://github.com/Aryamanj26/PlantDiseaseDetection/blob/main/Project-Report.pdf">Read the full project report (PDF)</a></p>
 
 <h2 id="github-repository">GitHub Repository</h2>
 <p><a href="https://github.com/Aryamanj26/PlantDiseaseDetection.git">View on GitHub</a></p>

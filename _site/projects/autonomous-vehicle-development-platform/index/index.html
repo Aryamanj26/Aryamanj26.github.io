@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <script src="/assets/js/script.js"></script>
+
+    
+    <title>Aryaman's Portfolio</title>
+    
+
+</head>
+<body>
+    <!-- NAVBAR -->
+     <!-- _includes/nav.html -->
+<nav>
+    <div class="left">
+        <a href="/">Aryaman Jadhav</a>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="right desktop-nav">
+        <a href="/">
+            <span>Home</span>
+        </a>
+        <a href="/projects/">
+            <span>Projects</span>
+        </a>
+        <a href="/assets/resume/Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Resume</span>
+        </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="fa fa-bars fa-2x"></i>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav">
+        <a href="/">
+            <span>Home</span>
+        </a>
+        <a href="/projects/">
+            <span>Projects</span>
+        </a>
+        <a href="/assets/resume/Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Resume</span>
+        </a>
+    </div>
+</nav>
+
+     <div class="page"><div class="post-view">
+    <div class="summary">
+        
+       
+        
+               
+        <img src="/_projects/autonomous-vehicle-development-platform/image.png" alt="Autonomous Vehicle Development Platform image">
+        
+        <div class="title-header">
+            <h1>Autonomous Vehicle Development Platform</h1>
+        </div>
+        
+        <div class="project-description">
+            <h2>Project Overview</h2>
+            <p>Built and deployed an autonomy stack on an NVIDIA Jetson Nano, integrating perception, localization, and control within a Dockerized ROS2 environment. Combined classical computer vision, real-time edge AI, and sensor fusion to achieve high-speed, centimeter-level localization and control on an RC-scale vehicle.
+</p>
+        </div>
+        <div class="skills-card">
+            <h2>Skills Used</h2> 
+            <div class="skills-list">
+                
+                <span class="skill">ROS2</span>    
+                
+                <span class="skill">Docker</span>    
+                
+                <span class="skill">Computer Vision</span>    
+                
+                <span class="skill">Sensor Fusion</span>    
+                
+                <span class="skill">Embedded Linux</span>    
+                
+                <span class="skill">Real-time Control</span>    
+                
+                <span class="skill">Edge AI</span>    
+                
+                <span class="skill">PID Control</span>    
+                
+                <span class="skill">EKF (Extended Kalman Filter)</span>    
+                
+                <span class="skill">OpenCV</span>    
+                
+                <span class="skill">NVIDIA Jetson</span>    
+                
+            </div>
+        </div>
+    </div>
+      
+    <div class="content">
+        <h2 id="overview">Overview</h2>
+
+<p>I built and deployed an autonomy stack on an NVIDIA Jetson Nano, integrating perception, localization, and control within a Dockerized ROS2 environment on Linux. The platform combined classical computer vision, real-time edge AI, and sensor fusion to achieve high-speed, centimeter-level localization and control on an RC-scale vehicle.</p>
+
+<h2 id="what-i-built">What I Built</h2>
+
+<p><strong>Development Environment:</strong></p>
+<ul>
+  <li>Set up a full Linux development workflow, resolving Jetson dependency conflicts by building OpenCV from source.</li>
+  <li>Created a Dockerized simulation of the Jetson environment on WSL, enabling isolated software testing before hardware deployment.</li>
+  <li>This workflow reduced debugging scope on hardware and ensured reproducibility.</li>
+</ul>
+
+<p><strong>Perception:</strong></p>
+<ul>
+  <li>Deployed a ROS2-based lane-following model using OpenCV to detect the road center line and apply error-box correction.</li>
+  <li>Integrated YOLO inference on the Myriad X VPU in the OAK-D Lite camera for real-time edge AI inference.</li>
+</ul>
+
+<p><strong>Localization:</strong></p>
+<ul>
+  <li>Achieved 3 cm localization accuracy by fusing Point One Nav RTK-GPS and IMU data with an Extended Kalman Filter (EKF).</li>
+  <li>Implemented EKF-based sensor upsampling from 10 Hz to 40 Hz, enabling stable high-speed path tracking at 12 mph.</li>
+</ul>
+
+<p><strong>Control:</strong></p>
+<ul>
+  <li>Designed a PID controller for path following, correcting trajectory relative to lane center and fused localization.</li>
+  <li>Optimized trajectory efficiency by 30% through control parameter tuning.</li>
+</ul>
+
+<hr />
+
+<h2 id="my-experience">My Experience</h2>
+
+<p>The biggest challenge was building a stable Linux-based development environment for the Jetson. Installing ROS2 and OpenCV often broke dependencies, so I built OpenCV from scratch to ensure GPU-accelerated CV worked consistently. To reduce wasted time debugging on hardware, I built a WSL-based Docker image that mirrored the Jetson runtime, letting me test perception and fusion nodes locally before deploying. This workflow proved invaluable, especially when tuning PID parameters and validating sensor fusion logic.</p>
+
+<hr />
+
+<h2 id="takeaways">Takeaways</h2>
+
+<ul>
+  <li><strong>Environment reproducibility matters:</strong> Dockerized Linux workflows isolated testing and cut hardware debugging time dramatically.</li>
+  <li><strong>Building from source (e.g., OpenCV):</strong> Sometimes the only way to guarantee stability on embedded systems like Jetson.</li>
+  <li><strong>Sensor fusion and upsampling:</strong> The real enablers of high-speed autonomy, not just the models.</li>
+  <li><strong>ROS2 modularity + containerization:</strong> Made the system extensible and robust.</li>
+</ul>
+
+    </div>
+</div>
+
+</div>
+
+     
+</body>
+
+    <footer>
+    <div class="footer-content">
+        <div class="links">
+            <a href="/">
+                <span>Home</span>
+            </a>
+            <a href="/projects/">
+                <span>Projects</span>
+            </a>
+            <a href=/assets/resume/Resume.pdf target="_blank" rel="noopener noreferrer">
+                <span>Resume</span>
+            </a>
+        </div>
+    </div>
+    <div class="license">
+        <span>For any question or suggestion for the portfolio template or projects, reach out <a class="help" href="mailto:admin@lowinertia.com"> Here</a> </span>
+        <p>Free-To-Engineer portfolio template © 2025 by lowinertia.com is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1">CC BY 4.0</a></p>
+    </div>
+</footer>
+
+</html>

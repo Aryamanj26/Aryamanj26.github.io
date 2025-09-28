@@ -75,68 +75,115 @@
         
         <div class="project-description">
             <h2>Project Overview</h2>
-            <p>Designed and implemented a custom database management system from scratch, focusing on query processing, indexing, and transaction management. Demonstrated understanding of database internals and efficient data storage techniques.</p>
+            <p>Designed and implemented a lightweight DBMS architecture in C++ with a clean, layered architecture to practice large-scale system design. The system separates command processing, parsing, storage, and presentation so each layer can evolve independently. It ships with a tokenizer and command router, a database layer stub, a block-oriented storage module, and a simple tabular view. The codebase is organized for growth rather than demo-only hacks.</p>
         </div>
         <div class="skills-card">
             <h2>Skills Used</h2> 
             <div class="skills-list">
                 
-                <span class="skill">Query processing</span>    
+                <span class="skill">Systems Architecture</span>    
                 
-                <span class="skill">Indexing</span>    
+                <span class="skill">Database Internals</span>    
                 
-                <span class="skill">Transaction management</span>    
+                <span class="skill">Block Storage Design</span>    
                 
-                <span class="skill">Data storage</span>    
+                <span class="skill">Parsing and Lexical Analysis</span>    
                 
-                <span class="skill">Database internals</span>    
+                <span class="skill">API and Interface Design</span>    
+                
+                <span class="skill">Extensibility Patterns (Chain of Responsibility)</span>    
+                
+                <span class="skill">Error Handling Frameworks</span>    
+                
+                <span class="skill">Modular C++ Programming</span>    
+                
+                <span class="skill">Metadata and Schema Management</span>    
+                
+                <span class="skill">Integration and Regression Testing</span>    
+                
+                <span class="skill">Scalability and Maintainability Principles</span>    
                 
             </div>
         </div>
     </div>
       
     <div class="content">
-        <h1 id="database-management-system">Database Management System</h1>
-<p>This project involved building a custom database management system from scratch, focusing on query processing, indexing, and transaction management. Demonstrated understanding of database internals and efficient data storage techniques.</p>
+        <h2 id="what-i-built">What I Built</h2>
 
-<h2 id="features">Features</h2>
+<p><strong>Command Pipeline:</strong></p>
 <ul>
-  <li>Custom query processor</li>
-  <li>Efficient indexing</li>
-  <li>Transaction support</li>
-  <li>Optimized data storage</li>
+  <li>Input → Tokenizer → CommandProcessor chain → Execution → View output</li>
 </ul>
 
-<h2 id="skills">Skills</h2>
+<p><strong>Controller Layer:</strong></p>
 <ul>
-  <li>Query processing</li>
-  <li>Indexing</li>
-  <li>Transaction management</li>
-  <li>Data storage</li>
-  <li>Database internals</li>
+  <li>AppController orchestrates command routing, error mapping, and result handling</li>
 </ul>
 
-<h2 id="embedding-images">Embedding images</h2>
-<h3 id="example-image">Example image</h3>
+<p><strong>Parsing &amp; Tokens:</strong></p>
+<ul>
+  <li>Keyword set, scanner, and tokenizer with cursor control and lookahead</li>
+</ul>
 
-<div class="image-gallery" style="--gallery-height: 400px;">
-  
-      
-      
-          
-          <img src="/projects/database-management-system//database.png" alt="database.png" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
-      
-  
-      
-      
-          <img src="https://placehold.co/600x400?text=Database+System" alt="Web image" loading="lazy" />
-      
-  
-</div>
-<p><span style="font-size: 10px">Sample database system image</span></p>
+<p><strong>Storage Layer:</strong></p>
+<ul>
+  <li>Block-based I/O abstraction (BlockIO, Storage) for streaming reads/writes and future free-list management</li>
+</ul>
 
-<h2 id="embedding-youtube-video">Embedding youtube video</h2>
-<p><em>Example</em> : https://www.youtube.com/watch?v={<strong>dQw4w9WgXcQ</strong>}</p>
+<p><strong>Database Stub:</strong></p>
+<ul>
+  <li>Database API with lifecycle hooks and a path to table DDL and metadata management</li>
+</ul>
+
+<p><strong>Views:</strong></p>
+<ul>
+  <li>View and TabularView to format results without leaking engine internals</li>
+</ul>
+
+<p><strong>Test Harness:</strong></p>
+<ul>
+  <li>Script runner and automatic tests to exercise the command surface and print structured output</li>
+</ul>
+
+<hr />
+
+<h2 id="architecture-and-design-highlights">Architecture and Design Highlights</h2>
+
+<ul>
+  <li><strong>Layered boundaries by contract</strong></li>
+  <li><strong>Controller</strong> knows how to route, not how to parse or store</li>
+  <li><strong>Tokenizer</strong> owns lexical concerns; execution never manipulates raw text</li>
+  <li><strong>Storage</strong> exposes block-level primitives and hides filesystem details</li>
+  <li><strong>Chain of Responsibility</strong> for extensibility</li>
+  <li><strong>CommandProcessor</strong> is a chainable handler; adding a new command type does not touch existing handlers</li>
+  <li><strong>Separation of concerns</strong> at the edges</li>
+  <li><strong>ViewInterface</strong> keeps formatting concerns out of business logic</li>
+  <li><strong>Errors and StatusResult</strong> centralize error propagation and mapping to user-facing messages</li>
+  <li><strong>Scalable I/O primitives</strong></li>
+  <li><strong>Storage APIs</strong> are intentionally small so you can later plug in buffer pools, free-space maps, WAL, or page caches without controller changes</li>
+  <li><strong>Deterministic testing</strong></li>
+  <li><strong>Scripted tests</strong> drive the same controller path as interactive use, which is how real DBs validate CLI behavior</li>
+</ul>
+
+<hr />
+
+<h2 id="my-experience">My Experience</h2>
+
+<p>I treated this like a systems design exercise more than a feature sprint. Early prototypes blurred parsing and execution, which made it hard to add commands. Refactoring to the pipeline with explicit interfaces made extension straightforward: new command family → new handler in the chain, new output shape → new View.</p>
+
+<p>The same thinking applied to storage: committing to block-level contracts up front forced me to design for future buffering, free-list, and recovery work rather than ad-hoc file writes.</p>
+
+<hr />
+
+<h2 id="takeaways">Takeaways</h2>
+
+<ul>
+  <li><strong>Design for growth:</strong> Small, stable interfaces at layer boundaries enable independent evolution of parser, executor, and storage</li>
+  <li><strong>Route then execute:</strong> A chain-of-responsibility command router keeps the controller closed for modification but open for extension</li>
+  <li><strong>I/O contracts first:</strong> Defining block/page semantics early is what makes buffer pools, free-space management, and logging pluggable later</li>
+  <li><strong>Presentation is a layer:</strong> Views decouple output from execution so you can add JSON, tabular, or API responses without engine changes</li>
+  <li><strong>Testing at the seam:</strong> Script-level tests that hit the controller are the fastest way to guard behavior as the system grows</li>
+</ul>
 
 <h2 id="github-repository">GitHub Repository</h2>
 <p><a href="https://github.com/Aryamanj26/DatabaseManagementSystem.git">View on GitHub</a></p>
