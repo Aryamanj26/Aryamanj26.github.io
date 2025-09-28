@@ -11,8 +11,8 @@ skills:
   - Welding
   - Metal forming
   - Thermal simulation
-
 main-image: /project2.jpg
+hidden: true
 ---
 
 ---

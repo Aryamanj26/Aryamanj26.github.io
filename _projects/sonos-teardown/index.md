@@ -8,8 +8,8 @@ skills:
   - Electronics Teardown
   - PCB analysis
   - audio system design
-
 main-image: /sonos.png
+hidden: true
 ---
 
 # This is another demo
