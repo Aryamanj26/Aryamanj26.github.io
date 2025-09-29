@@ -1,0 +1,18 @@
+<section id="interests" class="interests-section">
+    <div class="section-header">
+        <h2>Interests & Specializations</h2>
+        <p class="section-subtitle">Areas of focus and research interests</p>
+    </div>
+        
+    <div class="interests-grid">
+        {% for interest in site.interests %}
+            <div class="interest-card">
+                <div class="interest-icon">
+                    <i class="fa-solid {{ interest.icon }}"></i>
+                </div>
+                <h3 class="interest-title">{{ interest.area }}</h3>
+                <p class="interest-description">{{ interest.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>

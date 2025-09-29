@@ -1,28 +1,35 @@
-<!-- SECTION 3: project -->
+<!-- SECTION 3: Projects -->
 <section id="projects" class="project-grid-section">
-    <h2>Projects</h2>
+    <div class="section-header">
+        <h2>My Projects</h2>
+        <p class="section-subtitle">Engineering solutions that make a difference</p>
+    </div>
 
     <div class="grid-container">
         {% for item in site.projects %}
             {% unless item.hidden %}
                 <a href="{{ item.url }}" class="project-link">
                     <div class="project-card">
-                        {% assign folder_path = item.path | split: "/" | slice: 0, 2 | join: "/" %}
-                        {% assign image_path = "/" | append: folder_path | append: item['main-image'] %}
-                        <img src="{{ image_path }}" alt="{{ item.title }} image">
-                        <h3 class="project-title">{{ item.title }}</h3>
-                        <div class="project-skills">
-                            {% for skill in item.skills %}
-                                <span class="skill">{{ skill }}</span>
-                            {% endfor %}
+                        <div class="project-image-container">
+                            {% assign folder_path = item.path | split: "/" | slice: 0, 2 | join: "/" %}
+                            {% assign image_path = "/" | append: folder_path | append: item['main-image'] %}
+                            <img src="{{ image_path }}" alt="{{ item.title }} image" class="project-image">
+                            <div class="project-overlay">
+                                <span class="view-project">View Project →</span>
+                            </div>
                         </div>
-                        <p class="project-description">{{ item.description }}</p>
-                        <button class="read-more">Read more →</button>
+                        <div class="project-content">
+                            <h3 class="project-title">{{ item.title }}</h3>
+                            <p class="project-description">{{ item.description }}</p>
+                            <div class="project-skills">
+                                {% for skill in item.skills %}
+                                    <span class="skill-tag">{{ skill }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
                     </div>
                 </a>
             {% endunless %}
         {% endfor %}
     </div>
-
-
- </section>
+</section>

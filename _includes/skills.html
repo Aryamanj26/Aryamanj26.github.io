@@ -1,23 +1,19 @@
 <section id="skills" class="skills-section">
-    <h2>Skills</h2>
+    <div class="section-header">
+        <h2>Skills</h2>
+        <p class="section-subtitle">Technologies and tools I work with</p>
+    </div>
         
-    <ul class="skill-categories">
+    <div class="skills-grid">
         {% for skill in site.skills %}
-          <li>
-            <div class="skills-card">
-              <span class="category-label">{{ skill.category}}</span>
-            
-              <ul class="skills-list">
-                {% for skill in skill.tools %}
-                  <li class="skill">
-                    {{ skill }}
-                  </li>
-                {% endfor %}
-                </ul>
+            <div class="skill-category-card">
+                <h3 class="category-title">{{ skill.category }}</h3>
+                <div class="skills-list">
+                    {% for skill in skill.tools %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
             </div>
-            
-          </li> 
         {% endfor %}
-      </ul>
-
+    </div>
 </section>
