@@ -173,6 +173,8 @@ kramdown:
 
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
 include:
   - _projects
@@ -185,12 +187,6 @@ locale: "en_US"
 # Additional SEO settings
 google_analytics: # Add your Google Analytics ID here when you set it up
 google_site_verification: # Add your Google Search Console verification code here
-
-# Plugins for SEO
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
 
 # Jekyll SEO Tag settings
 social:
