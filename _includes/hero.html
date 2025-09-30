@@ -2,81 +2,8 @@
 <!-- SECTION 1: Hero -->
 <section class="hero-section">
     <div class="group">
-        <div class="text">
-            <div class="greeting-container">
-                <h1 class="main-title">
-                    Hi, I'm <span class="name-highlight">{{ site.name | split: ' ' | first }}</span>
-                </h1>
-            </div>
-            
-            <h2 class="headline-text">
-                {{site.headline}}
-            </h2>
-            
-            <p class="description-text">{{site.description}}</p>
-            
-            {% if site.external-links %}
-            <div class="social-links">
-                {% assign platforms = "linkedin,github,x-twitter,stackoverflow,discord,medium,threads,bluesky,instagram,youtube" | split: "," %}
-                {% for platform in platforms %}
-                    {% if site.external-links[platform] %}
-                        {% case platform %}
-                        {% when 'linkedin' %}
-                        <a href="https://www.linkedin.com/in/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
-                            <i class="fa-brands fa-linkedin"></i>
-                        </a>
-                    
-                        {% when 'github' %}
-                            <a href="https://github.com/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
-                                <i class="fa-brands fa-github"></i>
-                            </a>
-                        
-                        {% when 'stackoverflow' %}
-                            <a href="https://stackoverflow.com/users/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
-                                <i class="fa-brands fa-stack-overflow"></i>
-                            </a>
-                        
-                        {% when 'discord' %}
-                            <a href="https://discord.com/users/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
-                                <i class="fa-brands fa-discord"></i>
-                            </a>
-                        
-                        {% when 'medium' %}
-                            <a href="https://medium.com/@{{ site.external-links[platform] }}/" target="_blank" class="social-link">
-                                <i class="fa-brands fa-medium"></i>
-                            </a>
-                        
-                        {% when 'x-twitter' %}
-                            <a href="https://x.com/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-                        
-                        {% when 'threads' %}
-                            <a href="https://threads.net/@{{ site.external-links[platform] }}/" target="_blank" class="social-link">
-                                <i class="fa-brands fa-threads"></i>
-                            </a>
-                        
-                        {% when 'bluesky' %}
-                            <a href="https://bsky.app/profile/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
-                                <i class="fa-solid fa-cloud"></i>
-                            </a>
-                        
-                        {% when 'instagram' %}
-                            <a href="https://instagram.com/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-                        
-                        {% when 'youtube' %}
-                            <a href="https://youtube.com/@{{ site.external-links[platform] }}/" target="_blank" class="social-link">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
-
-                        {% endcase %}
-                    {% endif %}
-                {% endfor %}
-            </div>
-            {% endif %}
-            
+        <div class="navigation-section">
+            <!-- Choose layout: "navigation-links" for straight stack OR "navigation-links scattered" for grid layout -->
             <div class="navigation-links">
                 <a href="#projects" class="nav-btn primary-btn">
                     <span>View Projects</span>
@@ -91,12 +18,83 @@
                     <span>Get in touch</span>
                 </a>
             </div>
-            
         </div>
         
-        <div class="headshot">
-            <div class="profile-container">
-                <img src={{site.profile_image}} alt="{{site.name}} profile" class="profile-image">
+        <div class="text-with-image">
+            <div class="text-content">
+                <div class="greeting-container">
+                    <h1 class="main-title">
+                        Hi, I'm <span class="name-highlight">{{ site.name | split: ' ' | first }}</span>
+                    </h1>
+                </div>
+                
+                <h2 class="headline-text">
+                    {{site.headline}}
+                </h2>
+                
+                <p class="description-text">{{site.description}}</p>
+                
+                {% if site.external-links %}
+                <div class="social-links">
+                    {% assign platforms = "linkedin,github,x-twitter,stackoverflow,discord,medium,threads,bluesky,instagram,youtube" | split: "," %}
+                    {% for platform in platforms %}
+                        {% if site.external-links[platform] %}
+                            {% case platform %}
+                            {% when 'linkedin' %}
+                            <a href="https://www.linkedin.com/in/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        
+                            {% when 'github' %}
+                                <a href="https://github.com/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                            
+                            {% when 'stackoverflow' %}
+                                <a href="https://stackoverflow.com/users/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
+                                    <i class="fa-brands fa-stack-overflow"></i>
+                                </a>
+                            
+                            {% when 'discord' %}
+                                <a href="https://discord.com/users/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
+                                    <i class="fa-brands fa-discord"></i>
+                                </a>
+                            
+                            {% when 'medium' %}
+                                <a href="https://medium.com/@{{ site.external-links[platform] }}/" target="_blank" class="social-link">
+                                    <i class="fa-brands fa-medium"></i>
+                                </a>
+                            
+                            {% when 'x-twitter' %}
+                                <a href="https://x.com/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
+                                    <i class="fa-brands fa-x-twitter"></i>
+                                </a>
+                            
+                            {% when 'threads' %}
+                                <a href="https://threads.net/@{{ site.external-links[platform] }}/" target="_blank" class="social-link">
+                                    <i class="fa-brands fa-threads"></i>
+                                </a>
+                            
+                            {% when 'bluesky' %}
+                                <a href="https://bsky.app/profile/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
+                                    <i class="fa-solid fa-cloud"></i>
+                                </a>
+                            
+                            {% when 'instagram' %}
+                                <a href="https://instagram.com/{{ site.external-links[platform] }}/" target="_blank" class="social-link">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            
+                            {% when 'youtube' %}
+                                <a href="https://youtube.com/@{{ site.external-links[platform] }}/" target="_blank" class="social-link">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </a>
+
+                            {% endcase %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
             </div>
         </div> 
     </div>
