@@ -488,10 +488,6 @@ nav .mobile-nav {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    body {
-        padding: 0 20px; /* Reduce padding on mobile to prevent content cutoff */
-    }
-    
     .hero-section {
         padding: 60px 20px;
         min-height: 90vh;

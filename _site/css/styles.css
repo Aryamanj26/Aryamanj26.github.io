@@ -1,10 +1,13 @@
+﻿---
+---
+
 :root {
-  --text-color: #1a1c20;
-  --border-color: #ddd;
-  --link-color: #4a76ee;
-  --highlight-color: #0c0cf2;
-  --background-color: #ffffff;
-  --light-background-color: #f3f5fb;
+  --text-color: {{ site.colors.text }};
+  --border-color: {{ site.colors.border }};
+  --link-color: {{ site.colors.link }};
+  --highlight-color: {{ site.colors.highlight }};
+  --background-color: {{ site.colors.background }};
+  --light-background-color: {{ site.colors.light_background }};
 }
 
 * {
@@ -15,7 +18,20 @@
 }
 
 html {
-    scroll-behavior: smooth
+    scroll-behavior: smooth;
+    scroll-padding-top: -75px; /* -75px offset - scroll up significantly to show maximum content */
+}
+
+/* Ensure sections display properly when navigated to */
+#projects,
+#skills,
+#interests,
+#contact,
+.project-grid-section,
+.skills-section,
+.interests-section,
+.contact-section {
+    scroll-margin-top: -75px; /* -75px margin - scroll up significantly to show maximum content */
 }
 
 body {
@@ -162,17 +178,52 @@ nav .mobile-nav {
 .hero-section .group {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding: 0;
-    gap: 60px;
+    gap: 80px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.hero-section .text {
+.text-with-image {
     flex: 1;
     max-width: 600px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.profile-bubble {
+    flex-shrink: 0;
+    margin-top: 8px;
+}
+
+.profile-image-small {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.profile-image-small:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.text-content {
+    flex: 1;
+}
+
+.navigation-section {
+    flex: 0 0 280px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
 }
 
 /* Clean Typography - Apple style */
@@ -248,28 +299,58 @@ nav .mobile-nav {
     transform: translateY(-1px);
 }
 
-/* Apple-style Navigation Buttons */
+/* Apple-style Navigation Buttons - Bigger and prominent */
 .navigation-links {
     display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 0;
+    width: 100%;
+    max-width: 280px;
+}
+
+/* Alternative: Scattered/Grid Layout for navigation buttons */
+.navigation-links.scattered {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
     gap: 12px;
-    margin-top: 32px;
-    flex-wrap: wrap;
-    justify-content: center;
+    margin-top: 0;
+    width: 100%;
+    max-width: 280px;
+}
+
+.navigation-links.scattered .nav-btn:nth-child(1) {
+    grid-column: 1 / 3; /* "View Projects" spans full width */
+}
+
+.navigation-links.scattered .nav-btn:nth-child(2) {
+    grid-column: 1; /* "View Skills" left side */
+}
+
+.navigation-links.scattered .nav-btn:nth-child(3) {
+    grid-column: 2; /* "Interests" right side */
+}
+
+.navigation-links.scattered .nav-btn:nth-child(4) {
+    grid-column: 1 / 3; /* "Get in touch" spans full width */
 }
 
 .nav-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 32px;
-    border-radius: 24px;
+    padding: 20px 32px;
+    border-radius: 28px;
     text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    transition: all 0.2s ease;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s ease;
     border: none;
     position: relative;
     overflow: hidden;
+    width: 100%;
+    min-height: 60px;
 }
 
 .primary-btn {
@@ -407,6 +488,10 @@ nav .mobile-nav {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+    body {
+        padding: 0 20px; /* Reduce padding on mobile to prevent content cutoff */
+    }
+    
     .hero-section {
         padding: 60px 20px;
         min-height: 90vh;
@@ -416,38 +501,56 @@ nav .mobile-nav {
         flex-direction: column;
         text-align: center;
         gap: 40px;
+        align-items: center;
     }
     
-    .hero-section .text {
-        order: 2;
-    }
-    
-    .hero-section .headshot {
+    .text-with-image {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
         order: 1;
     }
     
-    .profile-container {
-        width: 240px;
-        height: 240px;
+    .profile-bubble {
+        margin-top: 0;
     }
     
-    .profile-image {
-        width: 200px;
-        height: 200px;
+    .profile-image-small {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .navigation-section {
+        order: 2;
+        flex: none;
+        width: 100%;
+        max-width: 400px;
+        padding-top: 20px;
     }
     
     .navigation-links {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
+        max-width: 100%;
+    }
+    
+    /* Mobile: Force scattered layout to stack vertically */
+    .navigation-links.scattered {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .navigation-links.scattered .nav-btn:nth-child(1),
+    .navigation-links.scattered .nav-btn:nth-child(2),
+    .navigation-links.scattered .nav-btn:nth-child(3),
+    .navigation-links.scattered .nav-btn:nth-child(4) {
+        grid-column: unset;
     }
     
     .nav-btn {
-        flex: 0 1 auto;
-        min-width: 140px;
-        font-size: 14px;
-        padding: 10px 20px;
+        font-size: 16px;
+        padding: 16px 24px;
+        min-height: 54px;
     }
 }
 
@@ -1472,3 +1575,4 @@ footer p {
     opacity: 0.7;
     margin: 0;
 }
+
