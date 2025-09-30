@@ -177,6 +177,27 @@ plugins:
 include:
   - _projects
 
+# SEO and Site Configuration
+url: "https://aryamanj26.github.io"  # Update this to your actual GitHub Pages URL
+baseurl: ""  # Leave empty for user pages
+locale: "en_US"
+
+# Additional SEO settings
+google_analytics: # Add your Google Analytics ID here when you set it up
+google_site_verification: # Add your Google Search Console verification code here
+
+# Plugins for SEO
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Jekyll SEO Tag settings
+social:
+  name: Aryaman Jadhav
+  links:
+    - https://www.linkedin.com/in/aryamanjadhav
+    - https://github.com/Aryamanj26
 
 # Exclude from processing.
 # The following items will not be processed, by default.

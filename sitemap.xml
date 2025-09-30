@@ -1,0 +1,42 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Pages -->
+  <url>
+    <loc>{{ site.url | append: site.baseurl }}/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>{{ site.url | append: site.baseurl }}/projects.html</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Project Pages -->
+  {% for project in site.projects %}
+  <url>
+    <loc>{{ site.url | append: site.baseurl }}{{ project.url }}</loc>
+    <lastmod>{{ project.date | date_to_xmlschema | default: site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  {% endfor %}
+
+  <!-- Other Static Pages -->
+  {% for page in site.pages %}
+    {% unless page.url contains '404' or page.url contains 'sitemap' or page.url contains 'robots' %}
+    <url>
+      <loc>{{ site.url | append: site.baseurl }}{{ page.url }}</loc>
+      <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+    </url>
+    {% endunless %}
+  {% endfor %}
+</urlset>

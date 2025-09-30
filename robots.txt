@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://aryamanj26.github.io/sitemap.xml
+
+# Disallow crawling of unnecessary directories
+Disallow: /_site/
+Disallow: /assets/readme/
+Disallow: /css/_site/
+
+# Allow crawling of all other content
+Allow: /projects/
+Allow: /assets/resume/
+Allow: /assets/images/

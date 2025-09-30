@@ -3,6 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} - {{ site.name }} | {{ site.headline }}{% endif %}</title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description | strip_html | truncate: 160 }}{% endif %}">
+    <meta name="keywords" content="{{ site.name }}, Aryaman Jadhav, Electrical Engineer, Portfolio, CUDA, Python, Hardware Design, RTL, FPGA, Embedded Systems">
+    <meta name="author" content="{{ site.name }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} - {{ site.name }}{% endif %}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description | strip_html | truncate: 160 }}{% endif %}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    {% if site.profile_image %}<meta property="og:image" content="{{ site.profile_image | absolute_url }}">{% endif %}
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ page.url | absolute_url }}">
+    <meta property="twitter:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} - {{ site.name }}{% endif %}">
+    <meta property="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description | strip_html | truncate: 160 }}{% endif %}">
+    {% if site.profile_image %}<meta property="twitter:image" content="{{ site.profile_image | absolute_url }}">{% endif %}
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "{{ site.name }}",
+      "jobTitle": "{{ site.headline }}",
+      "description": "{{ site.description | strip_html }}",
+      "url": "{{ site.url }}",
+      {% if site.profile_image %}"image": "{{ site.profile_image | absolute_url }}",{% endif %}
+      "sameAs": [
+        {% if site.external-links.linkedin %}"https://www.linkedin.com/in/{{ site.external-links.linkedin }}",{% endif %}
+        {% if site.external-links.github %}"https://github.com/{{ site.external-links.github }}",{% endif %}
+        {% if site.external-links.x-twitter %}"https://x.com/{{ site.external-links.x-twitter }}"{% endif %}
+      ]
+    }
+    </script>
 
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,9 +56,6 @@
     <link rel="stylesheet" href="/css/syntax.css">
 
     <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
-
-    
-    <title>{{ site.title }}</title>
     
 
 </head>
