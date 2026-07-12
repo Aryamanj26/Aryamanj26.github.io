@@ -11,10 +11,6 @@
                 {% assign folder_path = item.path | split: "/" | slice: 0, 2 | join: "/" %}
                 {% assign image_path = "/" | append: folder_path | append: item['main-image'] %}
                 <a href="{{ item.url | relative_url }}" class="project-link project-card" aria-label="Open {{ item.title }}">
-                    {% if item.year %}
-                        <span class="project-year">{{ item.year }}</span>
-                    {% endif %}
-
                     <div class="project-heading">
                         {% if item.category %}
                             <span class="project-category">{{ item.category }}</span>
@@ -28,7 +24,7 @@
                     </div>
 
                     <div class="project-image-container">
-                        <img src="{{ image_path | relative_url }}" alt="{{ item.visual_alt | default: item.title }}" class="project-image">
+                        <img src="{{ image_path | relative_url }}" alt="{{ item.visual_alt | default: item.title }}" class="project-image" loading="lazy" decoding="async">
                     </div>
 
                     <div class="project-content">

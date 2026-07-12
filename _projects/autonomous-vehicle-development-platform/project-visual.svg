@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
-  <title id="title">Autonomous vehicle development platform</title>
-  <desc id="desc">RC vehicle autonomy stack with sensors, EKF localization, perception, PID control, and actuation.</desc>
+  <title id="title">GPS-guided RC racing integration</title>
+  <desc id="desc">RC racing integration from Point One RTK-GNSS and IMU through EKF prediction and TUM raceline planning into the Donkey Car framework.</desc>
   <defs>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#12233f" flood-opacity="0.14"/>
@@ -28,7 +28,7 @@
   <rect class="bg" width="1200" height="750"/>
   <rect x="36" y="34" width="1128" height="682" rx="8" class="panel"/>
 
-  <text x="84" y="130" class="sub">ROS2, Jetson Nano, sensor fusion, perception, and real-time control</text>
+  <text x="84" y="130" class="sub">ROS2 integration of localization and raceline planning with Donkey Car</text>
 
   <g transform="translate(78 152)">
     <path d="M82 430 C44 330 74 202 170 150 C260 101 390 114 470 194 C548 272 560 386 490 456" fill="none" stroke="#cbd5e1" stroke-width="112" stroke-linecap="round"/>
@@ -48,39 +48,39 @@
     </g>
     <g transform="translate(42 486)">
       <rect x="0" y="0" width="144" height="76" rx="8" fill="#eaf2ff" stroke="#4a76ee"/>
-      <text x="18" y="34" class="metric">3 cm</text>
-      <text x="18" y="56" class="metric-label">RTK accuracy</text>
+      <text x="18" y="34" class="label">Point One</text>
+      <text x="18" y="56" class="metric-label">RTK-GNSS + IMU</text>
     </g>
     <g transform="translate(212 486)">
       <rect x="0" y="0" width="144" height="76" rx="8" fill="#eaf8f1" stroke="#25a36f"/>
-      <text x="18" y="34" class="metric">12 mph</text>
-      <text x="18" y="56" class="metric-label">path tracking</text>
+      <text x="18" y="34" class="label">10 → 40 Hz</text>
+      <text x="18" y="56" class="metric-label">EKF prediction</text>
     </g>
     <g transform="translate(382 486)">
       <rect x="0" y="0" width="144" height="76" rx="8" fill="#fff5df" stroke="#f2a516"/>
-      <text x="18" y="34" class="metric">40 Hz</text>
-      <text x="18" y="56" class="metric-label">state updates</text>
+      <text x="18" y="34" class="label">ROS2</text>
+      <text x="18" y="56" class="metric-label">system integration</text>
     </g>
   </g>
 
-  <g transform="translate(648 188)">
+  <g transform="translate(648 156)">
     <rect x="0" y="0" width="420" height="86" rx="8" class="box blue"/>
-    <text x="24" y="35" class="label">Sensors</text>
-    <text x="24" y="62" class="small">OAK-D camera, RTK-GPS, IMU</text>
-    <path d="M210 86 L210 128" class="line"/>
+    <text x="24" y="35" class="label">Point One Navigation</text>
+    <text x="24" y="62" class="small">RTK-GNSS and IMU measurements</text>
+    <path d="M210 86 V120" class="line"/>
 
-    <rect x="0" y="142" width="420" height="86" rx="8" class="box green"/>
-    <text x="24" y="177" class="label">Localization</text>
-    <text x="24" y="204" class="small">EKF fusion and 10 Hz to 40 Hz upsampling</text>
-    <path d="M210 228 L210 270" class="line"/>
+    <rect x="0" y="132" width="420" height="86" rx="8" class="box green"/>
+    <text x="24" y="167" class="label">EKF State Prediction</text>
+    <text x="24" y="194" class="small">10 Hz measurements propagated to a 40 Hz estimate</text>
+    <path d="M210 218 V252" class="line"/>
 
-    <rect x="0" y="284" width="420" height="86" rx="8" class="box amber"/>
-    <text x="24" y="319" class="label">Perception</text>
-    <text x="24" y="346" class="small">OpenCV lane center plus edge inference</text>
-    <path d="M210 370 L210 412" class="line"/>
+    <rect x="0" y="264" width="420" height="86" rx="8" class="box amber"/>
+    <text x="24" y="299" class="label">TUM Planning Nodes</text>
+    <text x="24" y="326" class="small">raceline optimization and trajectory planning</text>
+    <path d="M210 350 V384" class="line"/>
 
-    <rect x="0" y="426" width="420" height="86" rx="8" class="box violet"/>
-    <text x="24" y="461" class="label">Control</text>
-    <text x="24" y="488" class="small">PID steering and BLDC actuation</text>
+    <rect x="0" y="396" width="420" height="86" rx="8" class="box violet"/>
+    <text x="24" y="431" class="label">Donkey Car Framework</text>
+    <text x="24" y="458" class="small">existing low-level control and vehicle actuation</text>
   </g>
 </svg>

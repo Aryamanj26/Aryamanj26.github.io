@@ -1,44 +1,44 @@
 ---
 layout: post
-title: Autonomous Vehicle Development Platform
+title: GPS-Guided RC Racing Integration
 permalink: /projects/autonomous-vehicle-development-platform/
 category: Embedded Autonomy
 card_order: 30
 year: 2025
-description: Built an RC-scale autonomy stack with ROS2, Jetson Nano, RTK-GPS/IMU fusion, lane perception, and PID control.
-card_summary: RC-scale self-driving platform combining perception, localization, and control on embedded hardware.
-visual_alt: Diagram of an RC autonomous vehicle stack from sensors to EKF localization, perception, PID control, and actuation.
+description: Integrated RTK-GNSS localization and TUM raceline-planning ROS nodes into a Donkey Car stack running on a Jetson Nano.
+card_summary: ROS2 integration project connecting RTK-GNSS state estimation and TUM raceline planning to an existing Donkey Car control stack.
+visual_alt: Diagram of an RC racing stack from Point One RTK-GNSS and IMU through EKF prediction and TUM raceline planning into the Donkey Car framework.
 glance:
   - label: Platform
     value: Jetson + ROS2
-  - label: Localization
-    value: 3 cm RTK
-  - label: Control
-    value: 12 mph tracking
+  - label: Contribution
+    value: System integration
+  - label: Planning
+    value: TUM raceline
 skills:
   - ROS2
   - Docker
-  - OpenCV
-  - Sensor Fusion
   - Embedded Linux
   - NVIDIA Jetson
-  - PID Control
+  - RTK-GNSS
+  - EKF Integration
+  - Donkey Car
 main-image: /project-visual.svg
 ---
 
 ## What It Does
 
-This platform turns an RC vehicle into a small autonomy testbed: sensors estimate position, perception reads the lane, and a PID controller drives steering and speed commands.
+This team project connected GPS-guided racing components to an existing RC autonomy framework. My work focused on integrating ROS localization and planning nodes with Donkey Car rather than developing the underlying controller or TUM planning algorithm.
 
 ## System Flow
 
-- Camera, RTK-GPS, and IMU data enter ROS2 nodes running on the Jetson Nano.
-- An EKF fuses RTK-GPS and IMU data, then upsamples state estimates from 10 Hz to 40 Hz for smoother control.
-- OpenCV lane detection and OAK-D Lite inference feed perception signals into the controller.
-- PID tuning improved path efficiency by 30% and kept the vehicle stable at 12 mph.
+- Point One RTK-GNSS and IMU measurements enter ROS2 nodes running on the Jetson Nano.
+- EKF prediction increases the localization-state update rate from 10 Hz measurements to a 40 Hz estimate for downstream planning.
+- TUM raceline-optimization and path-planning nodes generate the racing trajectory.
+- The planned trajectory is passed into the existing Donkey Car framework, which supplies the low-level control and vehicle actuation.
 
 ## Engineering Focus
 
-- Built a Dockerized WSL environment that mirrored the Jetson runtime, reducing hardware-only debugging.
-- Resolved Jetson dependency conflicts by building OpenCV from source.
-- Kept the stack modular so perception, localization, and control nodes could be tested independently.
+- Built a Dockerized WSL environment that matched the Jetson software dependencies, reducing hardware-only debugging.
+- Integrated independently developed ROS nodes across localization, planning, and the Donkey Car runtime.
+- Kept the interfaces modular so state-estimation and planning components could be tested separately from the vehicle controller.

@@ -16,7 +16,6 @@
               src="{{ page_asset_base | append: image_name | relative_url }}"
               alt="{{ image_name }}"
               loading="lazy"
-              onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');"
           />
       {% endif %}
   {% endfor %}

@@ -5,9 +5,8 @@ permalink: /projects/database-management-system/
 category: Systems Architecture
 card_order: 60
 year: 2024
-github: https://github.com/aryamanjadhav26/DatabaseManagementSystem.git
 description: Built a lightweight C++ DBMS skeleton with a tokenizer, command router, block storage layer, and tabular output views.
-card_summary: A C++ database engine built as a system-design study. Tokenizer → command dispatcher → block storage → presentation, each layer separable and reasoned about in isolation. The project that taught me to think in layers before code.
+card_summary: C++ database-engine foundation with explicit boundaries between tokenization, command dispatch, block storage, and presentation.
 visual_alt: Diagram of a C++ DBMS pipeline from CLI input through tokenizer, command routing, execution, block storage, and table output.
 card_glance:
   - label: Pattern

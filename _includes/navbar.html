@@ -17,12 +17,12 @@
     </div>
 
     <!-- Mobile Menu Button -->
-    <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
-        <i class="fa fa-bars fa-2x"></i>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-controls="mobile-menu" aria-expanded="false">
+        <span class="hamburger" aria-hidden="true"></span>
     </button>
 
     <!-- Mobile Menu -->
-    <div class="mobile-nav">
+    <div class="mobile-nav" id="mobile-menu">
         <a href="{{ '/' | relative_url }}">
             <span>Home</span>
         </a>

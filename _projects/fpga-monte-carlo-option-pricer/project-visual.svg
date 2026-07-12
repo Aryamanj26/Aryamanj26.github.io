@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
   <title id="title">Monte Carlo Asian option pricer on FPGA</title>
-  <desc id="desc">Five-kernel Vitis HLS dataflow pipeline with xorshift PRNG, Box-Muller cosine LUT, GBM path simulation, payoff reduction, and outputs for price, delta, gamma, and vega.</desc>
+  <desc id="desc">Five-stage Vitis HLS dataflow pipeline with xorshift PRNG, Box-Muller cosine LUT, GBM path simulation, payoff reduction, and outputs for price, delta, gamma, and vega.</desc>
   <defs>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#12233f" flood-opacity="0.13"/>
@@ -77,9 +77,9 @@
       </g>
     </g>
 
-    <path d="M853 248 L853 258" class="stream"/>
+    <path d="M853 246 L853 268" class="stream"/>
 
-    <g transform="translate(728 262)" filter="url(#shadow)">
+    <g transform="translate(728 274)" filter="url(#shadow)">
       <rect x="0" y="0" width="250" height="58" rx="8" class="box violet"/>
       <text x="24" y="24" class="label">Payoff Reduction</text>
       <text x="24" y="46" class="small">price, delta, gamma, vega</text>
@@ -89,12 +89,12 @@
   <g transform="translate(84 548)">
     <rect x="0" y="0" width="190" height="86" rx="8" fill="#eaf2ff" stroke="#4a76ee"/>
     <text x="22" y="38" class="metric">3,228x</text>
-    <text x="22" y="62" class="metric-label">latency speedup</text>
+    <text x="22" y="62" class="metric-label">HLS-estimated speedup</text>
   </g>
   <g transform="translate(308 548)">
     <rect x="0" y="0" width="190" height="86" rx="8" fill="#eaf8f1" stroke="#25a36f"/>
     <text x="22" y="38" class="metric">4.4 µs</text>
-    <text x="22" y="62" class="metric-label">optimized latency</text>
+    <text x="22" y="62" class="metric-label">HLS-estimated latency</text>
   </g>
   <g transform="translate(532 548)">
     <rect x="0" y="0" width="190" height="86" rx="8" fill="#fff5df" stroke="#f2a516"/>

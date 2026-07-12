@@ -16,9 +16,9 @@ title: Aryaman Jadhav # This is what shows up in the tab of the browser
 name: Aryaman Jadhav
 headline: Electrical Engineer | mmWave Radar & Embedded Systems
 description: >-
-  Electrical engineering portfolio. Radar, signal processing, embedded ML, hardware design.
+  Electrical engineering portfolio focused on radar, signal processing, embedded systems, RF design, and FPGA acceleration.
 hero_intro: >-
-  Currently: trying to get a single-chip radar to see things it shouldn't, chasing a squat number that won't move, eating the same four meals on rotation, and convincing myself markets aren't just gaussians with extra steps.
+  I build sensing and compute systems across mmWave radar, embedded autonomy, RF design, and FPGA acceleration. My current research develops CFAR methods for isolating extended human targets in indoor radar data.
   
 
 
@@ -57,17 +57,17 @@ skills:
       - CFAR detection
       - Clutter suppression
       - Human target isolation
-      - Radar-based pose estimation
+      - Extended-target detection
+      - Depth-camera ROI evaluation
   - category: Perception, Localization & Control
     tools:
       - EKF state estimation
       - Multi-sensor calibration
-      - RTK-grade localization
+      - RTK-GNSS localization
       - Real-time perception on ROS2
       - PID control
   - category: Applied ML & Computer Vision
     tools:
-      - Cross-modal supervision
       - CNN classification
       - Image segmentation
       - PyTorch
@@ -81,8 +81,8 @@ skills:
   - category: Hardware Design
     tools:
       - SystemVerilog RTL & verification
-      - Pipelined microarchitecture
       - ISA design
+      - Assembler design
       - Vitis HLS
       - FPGA dataflow architectures
       - Fixed-point arithmetic
@@ -205,14 +205,9 @@ social:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - Reference
+  - README.md
+  - assets/readme
+  - assets/resume/Resume.pdf
+  - _projects/transparent-rectenna-array/poster.pdf

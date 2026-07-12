@@ -81,10 +81,11 @@
 
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- NAVBAR -->
     {% include navbar.html %}
 
-    <div class="page">{{ content }}</div>
+    <main id="main-content" class="page">{{ content }}</main>
     {% include footer.html %}
 </body>
 </html>

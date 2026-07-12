@@ -13,12 +13,12 @@
                     Active
                 </span>
             </div>
-            <h3 class="work-title">mmWave FMCW Radar Human Sensing</h3>
+            <h3 class="work-title">CFAR for Indoor mmWave Human Sensing</h3>
         </div>
 
         <p class="work-description">
-            Single-chip mmWave radar pushed past what the hardware natively offers. Raw ADC processing
-            on the radar side, high-resolution depth-camera supervision on the other.
+            Developing CFAR methods for indoor human activity sensing with a TI AWR6843ISK and DCA1000.
+            A RealSense D455 supplies reference regions of interest for measuring missed human returns and false detections.
         </p>
 
         <div class="work-pipeline">
@@ -27,31 +27,31 @@
                     <i class="fa-solid fa-satellite-dish"></i>
                 </div>
                 <span class="pipeline-label">Raw ADC Capture</span>
-                <p class="pipeline-desc">Single-chip mmWave radar, hardware-constrained acquisition</p>
+                <p class="pipeline-desc">AWR6843ISK + DCA1000 acquisition through TI's MATLAB workflow</p>
             </div>
             <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
             <div class="pipeline-stage">
                 <div class="pipeline-icon">
                     <i class="fa-solid fa-wave-square"></i>
                 </div>
-                <span class="pipeline-label">Signal Processing</span>
-                <p class="pipeline-desc">Range-Doppler, CFAR detection, clutter filtering</p>
+                <span class="pipeline-label">MATLAB Processing</span>
+                <p class="pipeline-desc">Range-Doppler processing and conventional CA-CFAR baseline</p>
             </div>
             <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
             <div class="pipeline-stage">
                 <div class="pipeline-icon">
                     <i class="fa-solid fa-person-walking"></i>
                 </div>
-                <span class="pipeline-label">Human Isolation</span>
-                <p class="pipeline-desc">Separating body reflections from environmental noise</p>
+                <span class="pipeline-label">Extended-Target CFAR</span>
+                <p class="pipeline-desc">Detection logic tailored to spatially distributed human returns</p>
             </div>
             <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
             <div class="pipeline-stage pipeline-stage--highlight">
                 <div class="pipeline-icon">
                     <i class="fa-solid fa-brain"></i>
                 </div>
-                <span class="pipeline-label">Vision-Supervised Pose</span>
-                <p class="pipeline-desc">Depth-camera joint detection as ground truth</p>
+                <span class="pipeline-label">ROI Evaluation</span>
+                <p class="pipeline-desc">D455 reference ROI, manually aligned using a physical cue</p>
             </div>
         </div>
 
@@ -61,9 +61,9 @@
             <span class="skill-tag">Range-Doppler</span>
             <span class="skill-tag">CFAR Detection</span>
             <span class="skill-tag">Clutter Suppression</span>
-            <span class="skill-tag">Human Activity Recognition</span>
-            <span class="skill-tag">Cross-Modal Supervision</span>
-            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Extended Human Targets</span>
+            <span class="skill-tag">RealSense D455</span>
+            <span class="skill-tag">MATLAB</span>
         </div>
     </div>
 </section>

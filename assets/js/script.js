@@ -22,6 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileNav.querySelectorAll('a').forEach((link) => {
             link.addEventListener('click', () => setMenuOpen(false));
         });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && mobileNav.classList.contains('active')) {
+                setMenuOpen(false);
+                menuToggle.focus();
+            }
+        });
     }
 
     document.querySelectorAll('.nav-btn, .arrow a').forEach((anchor) => {
@@ -34,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const target = document.querySelector(selector);
 
-            if (target) {
+            if (target && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 event.preventDefault();
                 target.scrollIntoView({
                     behavior: 'smooth',

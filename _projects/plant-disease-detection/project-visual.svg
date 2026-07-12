@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
   <title id="title">Plant disease detection pipeline</title>
-  <desc id="desc">Computer vision pipeline from leaf image and mask to feature extraction, CNN layers, and disease classification confidence.</desc>
+  <desc id="desc">Computer vision pipeline from leaf image through preprocessing and a five-layer CNN to disease classification.</desc>
   <defs>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#123225" flood-opacity="0.14"/>
@@ -23,7 +23,7 @@
   <rect class="bg" width="1200" height="750"/>
   <rect x="36" y="34" width="1128" height="682" rx="8" class="panel"/>
 
-  <text x="84" y="132" class="sub">Leaf masking, handcrafted features, and a 5-layer CNN for robust classification</text>
+  <text x="84" y="132" class="sub">Leaf preprocessing and a 5-layer CNN for 38-class disease classification</text>
 
   <g transform="translate(76 198)" filter="url(#shadow)">
     <rect x="0" y="0" width="220" height="240" rx="8" fill="#ecf8ef" stroke="#72b486" stroke-width="3"/>
@@ -38,13 +38,13 @@
   <path d="M312 318 L372 318" class="wire"/>
   <g transform="translate(388 198)" filter="url(#shadow)">
     <rect x="0" y="0" width="220" height="240" rx="8" fill="#f8fafc" stroke="#d2dbe8" stroke-width="3"/>
-    <text x="28" y="48" class="label">Mask + features</text>
+    <text x="28" y="48" class="label">Preprocessing</text>
     <path d="M112 78 C44 112 44 194 112 214 C190 190 190 112 112 78 Z" fill="#12233f"/>
     <path d="M112 92 C112 134 112 170 112 208" stroke="#ffffff" stroke-width="4" fill="none"/>
     <circle cx="68" cy="104" r="8" fill="#4a76ee"/>
     <circle cx="152" cy="130" r="8" fill="#f2a516"/>
     <circle cx="92" cy="174" r="8" fill="#25a36f"/>
-    <text x="38" y="224" class="small">shape, color, texture</text>
+    <text x="34" y="224" class="small">mask + normalization</text>
   </g>
   <path d="M624 318 L684 318" class="wire"/>
   <g transform="translate(700 198)" filter="url(#shadow)">
@@ -64,13 +64,13 @@
     <text x="18" y="48" class="label">Class</text>
     <rect x="22" y="82" width="64" height="118" rx="8" fill="#ffd8a8"/>
     <rect x="22" y="126" width="64" height="74" rx="8" fill="#f08c00"/>
-    <text x="27" y="224" class="small">95%</text>
+    <text x="25" y="224" class="small">label</text>
   </g>
 
   <g transform="translate(88 524)">
     <rect x="0" y="0" width="300" height="92" rx="8" fill="#ecf8ef" stroke="#72b486"/>
-    <text x="24" y="42" class="metric">87k images</text>
-    <text x="24" y="66" class="metric-label">training data</text>
+    <text x="24" y="42" class="metric">87,867 images</text>
+    <text x="24" y="66" class="metric-label">total dataset</text>
   </g>
   <g transform="translate(450 524)">
     <rect x="0" y="0" width="300" height="92" rx="8" fill="#eef2ff" stroke="#4a76ee"/>
@@ -79,7 +79,7 @@
   </g>
   <g transform="translate(812 524)">
     <rect x="0" y="0" width="300" height="92" rx="8" fill="#fff7ed" stroke="#f08c00"/>
-    <text x="24" y="42" class="metric">95% accuracy</text>
-    <text x="24" y="66" class="metric-label">test result</text>
+    <text x="24" y="42" class="metric">5-layer CNN</text>
+    <text x="24" y="66" class="metric-label">batch norm + dropout</text>
   </g>
 </svg>
