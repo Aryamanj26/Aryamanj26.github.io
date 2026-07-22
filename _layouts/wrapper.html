@@ -33,7 +33,6 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "{{ site.name | escape }}",
-      "jobTitle": "{{ site.headline | escape }}",
       "description": "{{ site.description | strip_html | strip_newlines | escape }}",
       "url": "{{ site.url }}",
       {% if site.profile_image %}"image": "{{ site.profile_image | absolute_url }}",{% endif %}

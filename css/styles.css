@@ -926,15 +926,24 @@ nav .mobile-nav {
 
 .project-grid-section .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 920px);
+    justify-content: center;
     gap: 30px;
     margin: 0 auto;
-    max-width: 1120px;
+    max-width: 1040px;
+    padding-left: 56px;
     position: relative;
 }
 
 .project-grid-section .grid-container::before {
-    display: none;
+    content: "";
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 24px;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(74, 118, 238, 0.42), rgba(20, 31, 48, 0.08));
+    border-radius: 999px;
 }
 
 .project-grid-section .project-link {
@@ -944,11 +953,55 @@ nav .mobile-nav {
     position: relative;
 }
 
+.project-year {
+    position: absolute;
+    top: 25px;
+    left: -104px;
+    width: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: rgba(26, 28, 32, 0.46);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-align: right;
+    transition: color 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.project-year::after {
+    content: "";
+    flex: 0 0 auto;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid rgba(74, 118, 238, 0.54);
+    box-shadow: 0 0 0 5px #ffffff;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.project-grid-section .project-link:hover .project-year {
+    color: rgba(74, 118, 238, 0.92);
+    transform: translateX(-2px);
+}
+
+.project-grid-section .project-link:hover .project-year::after {
+    background: #4a76ee;
+    border-color: #4a76ee;
+    box-shadow: 0 0 0 5px #ffffff, 0 0 0 8px rgba(74, 118, 238, 0.12);
+    transform: scale(1.08);
+}
+
 .project-card {
     background: #ffffff;
     border: 1px solid rgba(20, 31, 48, 0.08);
     border-radius: 8px;
-    overflow: hidden;
+    overflow: visible;
     transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
     position: relative;
     min-height: 100%;
@@ -1024,7 +1077,7 @@ nav .mobile-nav {
 }
 
 .project-year-pill {
-    display: inline-flex;
+    display: none;
     flex: 0 0 auto;
     padding: 5px 8px;
     border-radius: 6px;
@@ -1818,8 +1871,20 @@ footer p {
         padding-left: 0;
     }
 
+    .project-year {
+        display: none;
+    }
+
+    .project-grid-section .grid-container::before {
+        display: none;
+    }
+
     .project-title-row {
         align-items: center;
+    }
+
+    .project-year-pill {
+        display: inline-flex;
     }
 
     .project-grid-section {

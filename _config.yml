@@ -14,11 +14,10 @@ title: Aryaman Jadhav # This is what shows up in the tab of the browser
 
 # Hero section
 name: Aryaman Jadhav
-headline: Electrical Engineer | mmWave Radar & Embedded Systems
 description: >-
   Electrical engineering portfolio focused on radar, signal processing, embedded systems, RF design, and FPGA acceleration.
 hero_intro: >-
-  I build sensing and compute systems across mmWave radar, embedded autonomy, RF design, and FPGA acceleration. My current research develops CFAR methods for isolating extended human targets in indoor radar data.
+  Currently: trying to push the limits of small aperture radars, chasing a squat number that won't move, eating the same four meals on rotation, and convincing myself markets aren't just gaussians with extra steps.
   
 
 
@@ -52,13 +51,14 @@ skills:
   - category: Radar & Signal Processing
     tools:
       - FMCW radar
-      - Raw ADC processing
-      - Range-Doppler
-      - CFAR detection
+      - Radar signal processing
+      - Range-Doppler processing
+      - Statistical detection
+      - Angle-of-arrival estimation
+      - Subspace methods
       - Clutter suppression
-      - Human target isolation
+      - Multipath mitigation
       - Extended-target detection
-      - Depth-camera ROI evaluation
   - category: Perception, Localization & Control
     tools:
       - EKF state estimation

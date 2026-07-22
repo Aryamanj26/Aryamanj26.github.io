@@ -10,7 +10,9 @@
                     </h1>
                 </div>
 
+                {% if site.headline %}
                 <p class="headline-text">{{ site.headline }}</p>
+                {% endif %}
                 <p class="description-text">{{ site.hero_intro | default: site.description }}</p>
                 
                 {% if site.external-links %}
